@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4jm56gyfy1tn"]
+
+[ext_resource type="PackedScene" uid="uid://ypjgajl8aqhm" path="res://addons/PrisonRoom/Scenes/PrisonCell.glb" id="1_38y7i"]
+
+[node name="PrisonCell" instance=ExtResource("1_38y7i")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightbulb" index="1"]
+light_color = Color(0.6745098, 0.6745098, 0.40392157, 1)
+light_volumetric_fog_energy = 2.155

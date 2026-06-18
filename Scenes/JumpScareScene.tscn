@@ -1,12 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dce1ce76ksft2"]
+[gd_scene load_steps=18 format=3 uid="uid://dce1ce76ksft2"]
 
-[ext_resource type="Script" uid="uid://dj6m8u6fhwe5" path="res://Scripts/Viewport.gd" id="1_qwgc0"]
+[ext_resource type="Script" uid="uid://djsjm34g2a5h6" path="res://Scripts/jumpscareScene.gd" id="1_movgr"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_odast"]
-[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="3_w6d24"]
-[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="4_eedu0"]
-[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="5_yk0x3"]
+[ext_resource type="PackedScene" uid="uid://d4jm56gyfy1tn" path="res://Scenes/prison_cell.tscn" id="5_2ugf2"]
+[ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="5_movgr"]
 [ext_resource type="Script" uid="uid://hvrffl2gotbd" path="res://Scripts/BucketCode/Bucket.gd" id="6_vqvld"]
-[ext_resource type="PackedScene" uid="uid://ypjgajl8aqhm" path="res://addons/PrisonRoom/Scenes/PrisonCell.glb" id="7_qwgc0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bvgx"]
 
@@ -45,7 +43,7 @@ rings = 5
 [sub_resource type="BoxMesh" id="BoxMesh_lohlh"]
 
 [node name="GameScene" type="Node3D"]
-script = ExtResource("1_qwgc0")
+script = ExtResource("1_movgr")
 
 [node name="Table" type="StaticBody3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 0.5, 0, 0, 0, 20, -2.2771711, -0.7313949, -1.4181242)
@@ -107,30 +105,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.09684181, 0, 0)
 layers = 3
 mesh = SubResource("SphereMesh_kilg5")
 
-[node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.417123, 0.02680099, -0.8887392)
-current = true
-
-[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-
-[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
-tracker = &"left_hand"
-
-[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("3_w6d24")]
-
-[node name="FunctionPickup" parent="XROrigin3D/XRController3D" instance=ExtResource("4_eedu0")]
-grab_collision_mask = 327681
-ranged_collision_mask = 1
-
-[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
-tracker = &"right_hand"
-
-[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("5_yk0x3")]
-
-[node name="FunctionPickup" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_eedu0")]
-grab_collision_mask = 327681
-ranged_collision_mask = 1
-
 [node name="RedBucket" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.713017, 0, -2.5283356)
 visible = false
@@ -183,11 +157,11 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -2.5581148, 2.6813369, -0.15014863)
+[node name="Player" parent="." instance=ExtResource("5_movgr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.217429, 0.70733154, -1.0628774)
 
-[node name="PrisonCell" parent="." instance=ExtResource("7_qwgc0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9334326, -0.4478948, -1.8342886)
+[node name="PrisonCell2" parent="." instance=ExtResource("5_2ugf2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.440146, 0, -1.4124985)
 
 [connection signal="body_entered" from="RedBucket" to="RedBucket" method="_on_body_entered"]
 [connection signal="body_entered" from="BlueBucket" to="BlueBucket" method="_on_body_entered"]

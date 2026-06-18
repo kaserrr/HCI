@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c11am8k3be2ni"]
+[gd_scene load_steps=11 format=3 uid="uid://c11am8k3be2ni"]
 
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_gcf28"]
-[ext_resource type="Script" uid="uid://dj6m8u6fhwe5" path="res://Scripts/Viewport.gd" id="1_m1p8s"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_3sgdd"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="3_m1p8s"]
 [ext_resource type="Texture2D" uid="uid://6877ld02tj12" path="res://Assets/Images/tree_lined_driveway.jpg" id="4_3sgdd"]
@@ -23,7 +22,6 @@ flip_faces = true
 [sub_resource type="SphereMesh" id="SphereMesh_4p5gy"]
 
 [node name="NatureScene" type="Node3D"]
-script = ExtResource("1_m1p8s")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36689317, 0)
