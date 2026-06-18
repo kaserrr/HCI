@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://c11am8k3be2ni"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_gcf28"]
+[ext_resource type="Script" uid="uid://dj6m8u6fhwe5" path="res://Scripts/Viewport.gd" id="1_m1p8s"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_3sgdd"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="3_m1p8s"]
+[ext_resource type="Texture2D" uid="uid://6877ld02tj12" path="res://Assets/Images/tree_lined_driveway.jpg" id="4_3sgdd"]
+[ext_resource type="AudioStream" uid="uid://ddkm0qgetfi17" path="res://Assets/Sounds/Forest Sounds  Woodland Ambience, Bird Song.mp3" id="5_eogqh"]
+[ext_resource type="Script" uid="uid://dnaf6m1ecuu51" path="res://Scripts/DoorKnob.gd" id="7_uy3mb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1p8s"]
+albedo_texture = ExtResource("4_3sgdd")
+emission_enabled = true
+emission_energy_multiplier = 3.3
+
+[sub_resource type="SphereMesh" id="SphereMesh_eogqh"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("StandardMaterial3D_m1p8s")
+flip_faces = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3uxqj"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4p5gy"]
+
+[node name="NatureScene" type="Node3D"]
+script = ExtResource("1_m1p8s")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36689317, 0)
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("1_gcf28")]
+
+[node name="FunctionPickup" parent="XROrigin3D/XRController3D" instance=ExtResource("2_3sgdd")]
+grab_collision_mask = 327681
+ranged_collision_mask = 1
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_m1p8s")]
+
+[node name="FunctionPickup" parent="XROrigin3D/XRController3D2" instance=ExtResource("2_3sgdd")]
+grab_collision_mask = 327681
+ranged_collision_mask = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("SphereMesh_eogqh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25122595, 0)
+omni_range = 4096.0
+omni_attenuation = 0.3
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_eogqh")
+volume_db = -10.874
+autoplay = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.47073898, -0.36125773)
+script = ExtResource("7_uy3mb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_3uxqj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_4p5gy")

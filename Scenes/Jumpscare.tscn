@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://drkn7oqpu764t"]
+
+[ext_resource type="Script" uid="uid://b8audxyrc8j1m" path="res://Scripts/jumpscare.gd" id="1_wsj7o"]
+[ext_resource type="Texture2D" uid="uid://d2wu14v25qlq6" path="res://Assets/Images/Adobe Express - file (1).png" id="2_t6jni"]
+[ext_resource type="AudioStream" uid="uid://b7u3syi12rg41" path="res://Assets/Sounds/Jumpscare Sound Effect.mp3" id="2_vpfse"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vpfse"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5574663, 0.5574663, 0.5574663, 1)
+albedo_texture = ExtResource("2_t6jni")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t6jni"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("StandardMaterial3D_vpfse")
+
+[sub_resource type="Animation" id="Animation_y0jts"]
+resource_name = "JumpscareAnimation"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array()
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -5), Vector3(0, 0, 0)]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array()
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ygl3a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ia8yw"]
+_data = {
+&"JumpscareAnimation": SubResource("Animation_y0jts"),
+&"RESET": SubResource("Animation_ygl3a")
+}
+
+[node name="Jumpscare" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0, -3)
+script = ExtResource("1_wsj7o")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_vpfse")
+volume_db = -10.873
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("PlaneMesh_t6jni")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ia8yw")
+}

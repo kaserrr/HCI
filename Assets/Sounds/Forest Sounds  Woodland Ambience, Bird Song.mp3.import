@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddkm0qgetfi17"
+path="res://.godot/imported/Forest Sounds  Woodland Ambience, Bird Song.mp3-b57b2d8d6ec4faa4e4b41a20a25eceb5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/Forest Sounds  Woodland Ambience, Bird Song.mp3"
+dest_files=["res://.godot/imported/Forest Sounds  Woodland Ambience, Bird Song.mp3-b57b2d8d6ec4faa4e4b41a20a25eceb5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

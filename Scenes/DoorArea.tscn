@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwmlfy07ew0hb"]
+
+[ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_6itiu"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_poqrv"]
+[ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_vvp5f"]
+[ext_resource type="Script" uid="uid://dnaf6m1ecuu51" path="res://Scripts/DoorKnob.gd" id="5_6itiu"]
+
+[node name="DoorArea" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36689317, 0)
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("2_6itiu")]
+
+[node name="FunctionPickup" parent="XROrigin3D/XRController3D" instance=ExtResource("3_poqrv")]
+grab_collision_mask = 327681
+ranged_collision_mask = 1
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_vvp5f")]
+
+[node name="FunctionPickup" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_poqrv")]
+grab_collision_mask = 327681
+ranged_collision_mask = 1
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("5_6itiu")
