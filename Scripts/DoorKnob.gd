@@ -26,8 +26,12 @@ func _process(_delta):
 
 func open_door():
 	print("Door opened")
-	get_tree().change_scene_to_file("res://Scenes/NatureScene.tscn")
+	await FadeCanvas.change_scene(
+		"res://Scenes/NatureScene.tscn"
+	)
 
 func close_door():
 	print("Door closed")
-	get_tree().change_scene_to_file("res://Scenes/CloseDoorScene.tscn")
+	await FadeCanvas.change_scene(
+		"res://Scenes/CloseDoorScene.tscn"
+	)

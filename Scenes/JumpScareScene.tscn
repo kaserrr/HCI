@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://dce1ce76ksft2"]
+[gd_scene load_steps=19 format=3 uid="uid://dce1ce76ksft2"]
 
 [ext_resource type="Script" uid="uid://djsjm34g2a5h6" path="res://Scripts/jumpscareScene.gd" id="1_movgr"]
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="2_odast"]
 [ext_resource type="PackedScene" uid="uid://d4jm56gyfy1tn" path="res://Scenes/prison_cell.tscn" id="5_2ugf2"]
 [ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="5_movgr"]
+[ext_resource type="PackedScene" uid="uid://dl0u5usjwbs28" path="res://Scenes/FadeCanvas.tscn" id="6_2ugf2"]
 [ext_resource type="Script" uid="uid://hvrffl2gotbd" path="res://Scripts/BucketCode/Bucket.gd" id="6_vqvld"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bvgx"]
@@ -153,7 +154,7 @@ mesh = SubResource("BoxMesh_lohlh")
 skeleton = NodePath("")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -162,6 +163,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.217429, 0.70733154, -1.062
 
 [node name="PrisonCell2" parent="." instance=ExtResource("5_2ugf2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.440146, 0, -1.4124985)
+
+[node name="FadeCanvas" parent="." instance=ExtResource("6_2ugf2")]
 
 [connection signal="body_entered" from="RedBucket" to="RedBucket" method="_on_body_entered"]
 [connection signal="body_entered" from="BlueBucket" to="BlueBucket" method="_on_body_entered"]
