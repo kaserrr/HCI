@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2dtakxe0kiqy"]
+[gd_scene load_steps=7 format=3 uid="uid://b2dtakxe0kiqy"]
 
+[ext_resource type="Script" uid="uid://bklolnso4gj0u" path="res://Scripts/fade_plane.gd" id="1_dewec"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="1_gntrk"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_dewec"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="3_5ixxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ixxa"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nn08x"]
+material = SubResource("StandardMaterial3D_5ixxa")
 
 [node name="Player" type="Node3D"]
 
@@ -10,6 +18,11 @@
 current = true
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="FadePlane" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, -0.2)
+mesh = SubResource("PlaneMesh_nn08x")
+script = ExtResource("1_dewec")
 
 [node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

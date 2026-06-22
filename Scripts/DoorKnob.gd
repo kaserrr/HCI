@@ -24,11 +24,19 @@ func _process(_delta):
 			"CLOSE":
 				close_door()
 
+var scene_changing = false
+
 func open_door():
+	if scene_changing:
+		return
+
+	scene_changing = true
+
 	print("Door opened")
+
 	await FadeCanvas.change_scene(
 		"res://Scenes/NatureScene.tscn"
-	)
+)
 
 func close_door():
 	print("Door closed")
