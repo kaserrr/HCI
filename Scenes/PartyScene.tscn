@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dnt3eq54p6jgo"]
+
+[ext_resource type="Script" uid="uid://dj6m8u6fhwe5" path="res://Scripts/Viewport.gd" id="1_vk573"]
+[ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="2_0rtbq"]
+[ext_resource type="PackedScene" uid="uid://bc0xokigsw1j1" path="res://Scenes/Room.tscn" id="3_0rtbq"]
+[ext_resource type="Script" uid="uid://bb2j051ccb5i8" path="res://Scripts/PartyController.gd" id="4_gm3h4"]
+[ext_resource type="AudioStream" uid="uid://cv1oeaophavjy" path="res://Assets/Sounds/professionalsfx-balloon-pop-sound-effect-504628.mp3" id="5_xfcgc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_gm3h4"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xfcgc"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+angular_velocity_min = 4.999984
+angular_velocity_max = 19.999983
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfcgc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xfcgc"]
+material = SubResource("StandardMaterial3D_xfcgc")
+size = Vector3(0.03, 0.03, 0.03)
+
+[node name="PartyScene" type="Node3D"]
+script = ExtResource("1_vk573")
+
+[node name="Player" parent="." instance=ExtResource("2_0rtbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33561552, 0.68123007)
+
+[node name="Room" parent="." instance=ExtResource("3_0rtbq")]
+
+[node name="Balloon" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.2177258, -0.7641291)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Balloon"]
+mesh = SubResource("SphereMesh_gm3h4")
+
+[node name="PopSound" type="AudioStreamPlayer3D" parent="Balloon"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+stream = ExtResource("5_xfcgc")
+
+[node name="Confetti" type="GPUParticles3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.2177258, -0.7641291)
+emitting = false
+amount = 10000
+lifetime = 2.0
+one_shot = true
+speed_scale = 14.55
+explosiveness = 0.2
+visibility_aabb = AABB(-4, -4, -4, 10, 10, 10)
+process_material = SubResource("ParticleProcessMaterial_xfcgc")
+draw_pass_1 = SubResource("BoxMesh_xfcgc")
+
+[node name="PartyController" type="Node3D" parent="."]
+script = ExtResource("4_gm3h4")
+
+[node name="Character3" type="Node3D" parent="."]
+visible = false
+
+[node name="Character2" type="Node3D" parent="."]
+visible = false
+
+[node name="Character1" type="Node3D" parent="."]
+visible = false

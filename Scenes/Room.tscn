@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc0xokigsw1j1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j464w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5hpqs"]
+
+[node name="Room" type="Node3D"]
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, -4.3711387e-10, -2, 0, 0.01, -8.742278e-08, 0, 1, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+shape = SubResource("BoxShape3D_j464w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+mesh = SubResource("BoxMesh_5hpqs")
+skeleton = NodePath("../../Wall2")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(3.821371e-15, 4.3711387e-10, 2, 2, -4.3711387e-10, 0, 8.742278e-08, 0.01, -8.742278e-08, 0, 1, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+shape = SubResource("BoxShape3D_j464w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+mesh = SubResource("BoxMesh_5hpqs")
+skeleton = NodePath("../../Wall2")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.742278e-08, 0.01, 0, -2, -4.3711387e-10, 0, 0, 0, 2, -1, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+shape = SubResource("BoxShape3D_j464w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+mesh = SubResource("BoxMesh_5hpqs")
+skeleton = NodePath("../../Wall2")
+
+[node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(-8.742278e-08, -0.01, 0, 2, -4.3711387e-10, 0, 0, 0, 2, 1, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+shape = SubResource("BoxShape3D_j464w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
+mesh = SubResource("BoxMesh_5hpqs")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 0.01, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_j464w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_5hpqs")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.3445487, 0)

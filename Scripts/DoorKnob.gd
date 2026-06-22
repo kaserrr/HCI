@@ -41,5 +41,5 @@ func open_door():
 func close_door():
 	print("Door closed")
 	await FadeCanvas.change_scene(
-		"res://Scenes/CloseDoorScene.tscn"
+		"res://Scenes/PartyScene.tscn"
 	)

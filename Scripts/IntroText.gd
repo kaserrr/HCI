@@ -22,7 +22,7 @@ func _ready():
 	await fade_in(instructions, 0.5)
 	await wait_for_hold()
 
-	get_tree().change_scene_to_file("res://Scenes/EndScene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/JumpScareScene.tscn")
 
 
 func show_message(label: Label3D):
