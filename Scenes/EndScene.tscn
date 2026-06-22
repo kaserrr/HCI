@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwaeivhhtu4rk"]
+
+[ext_resource type="Script" uid="uid://bfhbvmhf0nuod" path="res://Scripts/EndScript.gd" id="1_ckv4c"]
+[ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="1_fxskr"]
+[ext_resource type="Script" uid="uid://dj6m8u6fhwe5" path="res://Scripts/Viewport.gd" id="1_hv2cy"]
+
+[node name="EndScene" type="Node3D"]
+script = ExtResource("1_hv2cy")
+
+[node name="Player" parent="." instance=ExtResource("1_fxskr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3605194, 0)
+
+[node name="EndText" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.8446146)
+script = ExtResource("1_ckv4c")
+
+[node name="Title" type="Label3D" parent="EndText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3396404, -3)
+text = "Experience Complete
+
+What was real...
+and what was not...
+
+is now for you to decide.
+
+Thank you for playing.
+
+Hold the trigger for 1 second to exit."
+
+[node name="ProgressLabel" type="Label3D" parent="EndText"]

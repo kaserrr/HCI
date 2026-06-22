@@ -1,8 +1,6 @@
 extends Node3D
 
 @onready var title: Label3D = $Title
-@onready var warning: Label3D = $Warning
-@onready var instructions: Label3D = $Instructions
 @onready var progress_label: Label3D = $ProgressLabel
 
 @onready var right_controller = $"../Player/XROrigin3D/XRController3D2"
@@ -10,25 +8,15 @@ extends Node3D
 const HOLD_TIME := 1.0
 
 func _ready():
-	for label in [title, warning, instructions]:
-		label.visible = true
-		label.modulate.a = 0.0
+	title.visible = true
+	title.modulate.a = 0.0
 
 	progress_label.visible = false
 
-	await show_message(title)
-	await show_message(warning)
-
-	await fade_in(instructions, 0.5)
+	await fade_in(title, 1.0)
 	await wait_for_hold()
 
-	get_tree().change_scene_to_file("res://Scenes/EndScene.tscn")
-
-
-func show_message(label: Label3D):
-	await fade_in(label, 0.5)
-	await wait_for_hold()
-	await fade_out(label, 0.5)
+	get_tree().quit()
 
 
 func wait_for_hold():
@@ -53,10 +41,4 @@ func wait_for_hold():
 func fade_in(label: Label3D, duration: float):
 	var tween = create_tween()
 	tween.tween_property(label, "modulate:a", 1.0, duration)
-	await tween.finished
-
-
-func fade_out(label: Label3D, duration: float):
-	var tween = create_tween()
-	tween.tween_property(label, "modulate:a", 0.0, duration)
 	await tween.finished
