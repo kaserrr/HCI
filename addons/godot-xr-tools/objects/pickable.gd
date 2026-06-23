@@ -2,7 +2,7 @@
 class_name XRToolsPickable
 extends RigidBody3D
 
-@export_enum("red", "blue", "green", "yellow")
+@export_enum("red")
 var ball_color = "red"
 
 ## XR Tools Pickable Object

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_6itiu"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="3_poqrv"]
 [ext_resource type="PackedScene" uid="uid://xqimcf20s2jp" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_fullglove_low.tscn" id="4_vvp5f"]
-[ext_resource type="Script" uid="uid://dnaf6m1ecuu51" path="res://Scripts/DoorKnob.gd" id="5_6itiu"]
+[ext_resource type="Script" uid="uid://dnaf6m1ecuu51" path="res://Scripts/UDPManager.gd" id="5_6itiu"]
 
 [node name="DoorArea" type="Node3D"]
 

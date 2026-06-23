@@ -96,7 +96,7 @@ script = ExtResource("1_wsj7o")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_vpfse")
-volume_db = -10.873
+volume_db = -80.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)

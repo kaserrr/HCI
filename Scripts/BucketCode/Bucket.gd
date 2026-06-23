@@ -1,6 +1,6 @@
-extends Area3D
+extends Node3D
 
-@export_enum("red", "blue", "green", "yellow")
+@export_enum("red")
 var bucket_color = "red"
 
 func _on_body_entered(body):

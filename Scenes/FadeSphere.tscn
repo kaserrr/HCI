@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsimstmf1xd17"]
+
+[sub_resource type="GDScript" id="GDScript_6ryxc"]
+script/source = "extends Node3D
+
+@onready var fade_sphere = $FadeSphere
+
+func _ready():
+
+	# Begin volledig zwart
+	fade_sphere.visible = true
+
+	# Even wachten zodat de overgang rustig voelt
+	await get_tree().create_timer(1.0).timeout
+
+	# Ga naar de volgende scene
+	get_tree().change_scene_to_file(
+		SceneManager.after_transition_scene
+	)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ryxc"]
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_venqk"]
+cull_mode = 2
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_fut22"]
+material = SubResource("StandardMaterial3D_venqk")
+flip_faces = true
+
+[node name="FadeSphere" type="Node3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+visible = false
+script = SubResource("GDScript_6ryxc")
+
+[node name="FadeSphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6ryxc")
+mesh = SubResource("SphereMesh_fut22")

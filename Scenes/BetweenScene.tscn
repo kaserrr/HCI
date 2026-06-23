@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxmmjay3bduqc"]
+
+[ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="1_kb3gb"]
+[ext_resource type="Script" uid="uid://do2tqay22rwav" path="res://Scripts/BetweenScene.gd" id="1_s2bcg"]
+
+[node name="BetweenScene" type="Node3D"]
+script = ExtResource("1_s2bcg")
+
+[node name="Player" parent="." instance=ExtResource("1_kb3gb")]
+
+[node name="BetweenText" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.1751328)
+
+[node name="Title" type="Label3D" parent="BetweenText"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8249637, 0)
+
+[node name="ProgressLabel" type="Label3D" parent="BetweenText"]
