@@ -3,6 +3,7 @@ extends Node3D
 @onready var balloon = $"../Balloon"
 @onready var pop_sound = $"../Balloon/PopSound"
 @onready var confetti = $"../Confetti"
+@onready var party_music = $"../PartyMusic"
 
 @onready var characters = [
 	$"../Character1",
@@ -73,3 +74,6 @@ func pop_balloon():
 	if characters.size() > 0:
 		var chosen = characters[randi() % characters.size()]
 		chosen.visible = true
+		
+	if party_music:
+		party_music.play()

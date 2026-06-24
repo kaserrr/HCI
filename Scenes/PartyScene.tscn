@@ -95,3 +95,5 @@ visible = false
 
 [node name="Character1" type="Node3D" parent="."]
 visible = false
+
+[node name="PartyMusic" type="AudioStreamPlayer3D" parent="."]

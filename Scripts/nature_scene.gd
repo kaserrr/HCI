@@ -20,9 +20,11 @@ func _on_message_received(message):
 		scene_changing = true
 
 		SceneManager.between_text = """
-The previous environment was designed to create a sense of calm.
-
-Take a moment to reflect on how this environment made you feel before con0tinuing.
+		Surprise
+		
+One last mission! Hand your controllers to one of our team members, grab the pump,
+ and let's see what you've got.
+ Pump that balloon!
 """
 
 		SceneManager.next_scene = "res://Scenes/PartyScene.tscn"

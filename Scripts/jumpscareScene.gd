@@ -32,9 +32,10 @@ func _on_message_received(message):
 		scene_changing = true
 
 		SceneManager.between_text = """
-		Take a moment to reflect on how the previous environment made you feel.
-
-		Stress and uncertainty can influence the way we perceive our surroundings.
+		Relax
+		
+		Enter a peaceful environment where your senses of sight, sound, smell, and touch are gently awakened.
+		Take your time, relax, and immerse yourself in the experience.
 		"""
 		SceneManager.next_scene = "res://Scenes/NatureScene.tscn"
 
