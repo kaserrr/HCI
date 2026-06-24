@@ -1,55 +1,55 @@
-# HCI VR Ervaring
+# HCI VR Experience
 
-Dit project is een Godot 4.5 VR-prototype (OpenXR) waarin de speler door meerdere emotionele scènes gaat.  
-De ervaring combineert fysieke interactie (controllers, objecten oppakken, ballon pompen) met sfeerovergangen en korte opdrachten.
+This project is a Godot 4.5 VR prototype (OpenXR) in which the player moves through multiple emotional scenes.  
+The experience combines physical interaction (controllers, picking up objects, pumping a balloon) with atmosphere transitions and short tasks.
 
-## Wat dit project doet in grote lijnen
+## What this project does at a high level
 
-De speler doorloopt een vaste flow van scènes:
+The player follows a fixed scene flow:
 
 1. **StartScene**  
-   Introductieteksten en instructies. De speler houdt de trigger ingedrukt om verder te gaan.
+   Introductory text and instructions. The player holds the trigger to continue.
 2. **JumpScareScene**  
-   Spannende omgeving met jumpscare-elementen en een korte opdracht met ballen/bucket.
+   A tense environment with jump-scare elements and a short balls/bucket task.
 3. **BetweenScene**  
-   Tussenpagina met uitlegtekst en trigger-hold om door te gaan.
+   An intermission page with explanatory text and trigger-hold to continue.
 4. **NatureScene**  
-   Rustige natuurervaring met audio/visual sfeer.
+   A calm nature experience with audio/visual atmosphere.
 5. **PartyScene**  
-   Speelse finale waarin de speler een ballon pompt tot deze knapt.
+   A playful finale where the player pumps a balloon until it pops.
 6. **EndScene**  
-   Afsluitende boodschap, daarna afsluiten van de applicatie.
+   Closing message, followed by application exit.
 
-## Belangrijkste technische opzet
+## Main technical setup
 
 - **Engine & XR**
-  - Godot 4.5 met OpenXR.
-  - `Scripts/Viewport.gd` zet XR en passthrough op.
-  - `addons/godot-xr-tools` levert hand/controllers en interactiecomponenten.
+  - Godot 4.5 with OpenXR.
+  - `Scripts/Viewport.gd` enables XR and passthrough.
+  - `addons/godot-xr-tools` provides hand/controller and interaction components.
 
-- **Autoloads (globale managers)**
-  - `Scripts/UDPManager.gd`: centrale eventbron (`message_received`) voor o.a. `"OPEN"`.
-  - `Scripts/SceneManager.gd`: bewaart tijdelijke overgangsdata zoals `between_text` en `next_scene`.
-  - `Scenes/FadeCanvas.tscn` + `Scripts/fade_canvas.gd`: globale fade-in/fade-out en scenewissels.
+- **Autoloads (global managers)**
+  - `Scripts/UDPManager.gd`: central event source (`message_received`) for events such as `"OPEN"`.
+  - `Scripts/SceneManager.gd`: stores temporary transition data such as `between_text` and `next_scene`.
+  - `Scenes/FadeCanvas.tscn` + `Scripts/fade_canvas.gd`: global fade-in/fade-out and scene transitions.
 
-- **Scènebesturing**
-  - Elke hoofdscene heeft eigen scriptlogica in `Scripts/`.
-  - Overgangen gebeuren via `FadeCanvas` en/of `SceneManager`-waarden.
-  - In meerdere scènes wordt de rechter trigger gebruikt als “hold to continue”-mechanisme.
+- **Scene control**
+  - Each main scene has its own script logic in `Scripts/`.
+  - Transitions happen through `FadeCanvas` and/or `SceneManager` values.
+  - In multiple scenes, the right trigger is used as a “hold to continue” mechanic.
 
-- **Interactie**
-  - Objectinteractie en oppakken via XR Tools in `Scenes/Player.tscn`.
-  - In de party-scène stuurt `Scripts/PartyController.gd` de ballon-groei, popmoment, confetti en karakteranimatie.
+- **Interaction**
+  - Object interaction and grabbing are handled through XR Tools in `Scenes/Player.tscn`.
+  - In the party scene, `Scripts/PartyController.gd` controls balloon growth, the pop moment, confetti, and character animation.
 
-## Mappen op hoofdlijnen
+## Main folders
 
-- `Scenes/` – alle Godot scènes (`.tscn`)
-- `Scripts/` – GDScript logica
-- `Assets/` en `Meshes/` – modellen, textures, audio en andere assets
-- `addons/` – externe plugins (waaronder `godot-xr-tools`)
-- `project.godot` – hoofdconfiguratie van het project
+- `Scenes/` – all Godot scenes (`.tscn`)
+- `Scripts/` – GDScript logic
+- `Assets/` and `Meshes/` – models, textures, audio, and other assets
+- `addons/` – external plugins (including `godot-xr-tools`)
+- `project.godot` – main project configuration
 
-## Opmerking
+## Note
 
-In de huidige versie worden `"OPEN"` events gesimuleerd via toetsenbordinput in `UDPManager` (toets `0`).  
-Dit lijkt bedoeld als tijdelijke trigger/testpad voor externe input (bijv. hardware-integratie).
+In the current version, `"OPEN"` events are simulated through keyboard input in `UDPManager` (key `0`).  
+This appears to be intended as a temporary trigger/test path for external input (e.g., hardware integration).
