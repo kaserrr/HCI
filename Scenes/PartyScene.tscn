@@ -1,10 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnt3eq54p6jgo"]
+[gd_scene load_steps=21 format=3 uid="uid://dnt3eq54p6jgo"]
 
 [ext_resource type="Script" uid="uid://d4ck27lac8x2o" path="res://Scripts/PartyScene.gd" id="1_xfcgc"]
 [ext_resource type="PackedScene" uid="uid://b2dtakxe0kiqy" path="res://Scenes/Player.tscn" id="2_0rtbq"]
 [ext_resource type="PackedScene" uid="uid://bc0xokigsw1j1" path="res://Scenes/Room.tscn" id="3_0rtbq"]
 [ext_resource type="Script" uid="uid://bb2j051ccb5i8" path="res://Scripts/PartyController.gd" id="4_gm3h4"]
+[ext_resource type="PackedScene" uid="uid://cgqu4458oafw2" path="res://Assets/Models/octo2.glb" id="5_4vga6"]
+[ext_resource type="PackedScene" uid="uid://c3cgswreh11od" path="res://Assets/Models/flower1.glb" id="5_wsmum"]
 [ext_resource type="AudioStream" uid="uid://cv1oeaophavjy" path="res://Assets/Sounds/professionalsfx-balloon-pop-sound-effect-504628.mp3" id="5_xfcgc"]
+[ext_resource type="PackedScene" uid="uid://chq2o7snq8vjm" path="res://Assets/Models/flower2.glb" id="6_0hj0q"]
+[ext_resource type="PackedScene" uid="uid://cegiv6u0o45pe" path="res://Assets/Models/octo4.glb" id="6_ist6e"]
+[ext_resource type="PackedScene" uid="uid://bfx3b4afar7pl" path="res://Assets/Models/3287d0e46a60d206762145ad4a43560a.glb" id="6_nm83b"]
+[ext_resource type="PackedScene" uid="uid://dc61vt0jub01e" path="res://Assets/Models/flower3.glb" id="7_4vga6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm83b"]
 albedo_color = Color(1, 0, 0, 1)
@@ -47,9 +53,6 @@ size = Vector3(0.03, 0.03, 0.03)
 [node name="PartyScene" type="Node3D"]
 script = ExtResource("1_xfcgc")
 
-[node name="Player" parent="." instance=ExtResource("2_0rtbq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33561552, 0.68123007)
-
 [node name="Room" parent="." instance=ExtResource("3_0rtbq")]
 
 [node name="Balloon" type="Node3D" parent="."]
@@ -88,12 +91,43 @@ draw_pass_1 = SubResource("BoxMesh_xfcgc")
 script = ExtResource("4_gm3h4")
 
 [node name="Character3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15432012, -0.6374539)
+
+[node name="Frame1" type="Node3D" parent="Character3"]
+visible = false
+
+[node name="Frame2" parent="Character3" instance=ExtResource("5_4vga6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15432012, 0.6374539)
+visible = false
+
+[node name="Frame3" parent="Character3" instance=ExtResource("6_ist6e")]
 visible = false
 
 [node name="Character2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15432012, -0.6374539)
+
+[node name="Frame1" parent="Character2" instance=ExtResource("5_wsmum")]
+visible = false
+
+[node name="Frame2" parent="Character2" instance=ExtResource("6_0hj0q")]
+transform = Transform3D(1.175, 0, 0, 0, 1.175, 0, 0, 0, 1.175, -0.009266019, -0.025948107, 0)
+visible = false
+
+[node name="Frame3" parent="Character2" instance=ExtResource("7_4vga6")]
 visible = false
 
 [node name="Character1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15432012, -0.6374539)
+
+[node name="Frame2" type="Node3D" parent="Character1"]
+visible = false
+
+[node name="Frame3" type="Node3D" parent="Character1"]
+visible = false
+
+[node name="Frame1" parent="Character1" instance=ExtResource("6_nm83b")]
 visible = false
 
 [node name="PartyMusic" type="AudioStreamPlayer3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_0rtbq")]

@@ -47,6 +47,7 @@ renderer/rendering_method="mobile"
 [xr]
 
 openxr/enabled=true
+openxr/extensions/hand_tracking=true
 openxr/extensions/hand_interaction_profile=true
 shaders/enabled=true
 openxr/extensions/meta/passthrough=true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://bc0xokigsw1j1"]
+[gd_scene load_steps=10 format=4 uid="uid://bc0xokigsw1j1"]
 
 [ext_resource type="ArrayMesh" uid="uid://c3rjtbxxovrjj" path="res://Meshes/WallTexture.tres" id="1_5hpqs"]
 [ext_resource type="ArrayMesh" uid="uid://hfvq0by2dns4" path="res://Meshes/FloorTexture.tres" id="2_nn86p"]
@@ -78,6 +78,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_su8ho")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_nn86p"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.2
+
 [node name="Room" type="Node3D"]
 
 [node name="Wall4" type="StaticBody3D" parent="."]
@@ -132,7 +137,7 @@ mesh = ExtResource("2_nn86p")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.3445487, 0)
 
 [node name="modular_doors" type="Node3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.08948469, 0, 0.9677626)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.08948469, 0.43376577, 0.9677626)
 
 [node name="door_7" type="MeshInstance3D" parent="modular_doors"]
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0.85, 0.5)
@@ -143,3 +148,7 @@ skeleton = NodePath("")
 transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bb5oa")
 skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="modular_doors"]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0.033928037, 0.85970974, -0.36553222)
+mesh = SubResource("CylinderMesh_nn86p")
